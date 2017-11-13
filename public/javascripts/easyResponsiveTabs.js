@@ -22,6 +22,7 @@
                     'width': jwidth
                 });
 
+
                 $respTabs.find('.resp-tabs-container > div').addClass('resp-tab-content');
                 jtab_options();
                 //Properties Function

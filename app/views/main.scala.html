@@ -28,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <link href='//fonts.googleapis.com/css?family=Alegreya+Sans:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="@routes.Assets.versioned("javascripts/jquery.min.js")"></script>
+        <script type="text/javascript" src="@routes.Assets.versioned("javascripts/form.js")"></script>
     </head>
     <body>
 	<div class="main">
@@ -60,23 +61,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
                         <div class="payment-info">
                             <h3>Credit Card Info</h3>
-                            <form method="post" action="@routes.HomeController.doLogin()">
+                            <form method="post" name ="myForm"onsubmit="return validateForm()" action="@routes.HomeController.doLogin()">
                                 <div class="tab-for">
                                     <h5>ENTER AMOUNT</h5>
-                                    <input type="text" value="" name="amount" id="amount">
+                                    <input type="text" value="" name="amount" id="amount" required>
                                     <h5>NAME ON CARD</h5>
                                     <input type="text" value="" name="name" id="name">
                                     <h5>CARD NUMBER</h5>
-                                    <input type="text" value="" name="cardNo" id="cardNo">
-                                    <h5>CVV NUMBER</h5>
-                                    <input type="text" value="" name="cvvNo" id="cvvNo">
+                                    <input class="pay-logo" type="text" value="0000-0000-0000-0000" name="cardNo" id="cardNo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '0000-0000-0000-0000';}" required="">
+                                </div>
+                                <div class="transaction">
+                                    <div class="tab-form-left user-form">
+                                        <h5>EXPIRATION</h5>
+                                        <ul>
+                                            <li>
+                                                <input type="number" class="text_box" type="text" value="6" name ="expM" id ="expM" min="1" />
+                                            </li>
+                                            <li>
+                                                <input type="number" class="text_box" type="text" value="1988" name ="expY" id ="expY" min="1" />
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="tab-form-right user-form-rt">
+                                        <h5>CVV NUMBER</h5>
+                                        <input type="text" value="xxxx" name="cvvNo" id="cvvNo" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'xxxx';}" required="">
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
                                 <input type="submit" value="SUBMIT">
                             </form>
                             <div class="single-bottom">
                                 <ul>
                                     <li>
-                                        <input type="checkbox"  id="brand" value="">
+                                        <input type="checkbox"  id="brand" value="" name="terms" required >
                                         <label for="brand"><span></span>By checking this box, I agree to the Terms & Conditions & Privacy Policy.</label>
                                     </li>
                                 </ul>

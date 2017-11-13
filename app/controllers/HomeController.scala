@@ -30,6 +30,8 @@ class HomeController @Inject() extends Controller {
       Ok(s"amount: '${loginRequest.amount}',"+
         s"name: '${loginRequest.name}',"+
         s"cardNo: '${loginRequest.cardNo}',"+
+        s"expM: '${loginRequest.expM}',"+
+        s"expY: '${loginRequest.expY}',"+
         s"cvvNo: '${loginRequest.cvvNo}',"
 
       )
@@ -37,13 +39,17 @@ class HomeController @Inject() extends Controller {
 
     def loginForm = Form(mapping(
       "amount" -> number,
-      "name" -> text,
+      "name" -> nonEmptyText,
       "cardNo" -> number,
+      "expM" -> number,
+      "expY" -> number,
       "cvvNo" -> number)
     (PaymentForm.apply)(PaymentForm.unapply))
   }
   case class PaymentForm( amount:Int,
                           name:String,
                           cardNo: Int,
+                          expM: Int,
+                          expY:Int,
                           cvvNo: Int)
 
